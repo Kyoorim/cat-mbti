@@ -5,8 +5,8 @@ export const QuestionData = [
   {
     id: 1,
     title: "친구의 반려견을 돌보게 된 나는",
-    answera: "뽀미는 잘 지내. 뽀미와의 하루에 대해 보고",
-    answerb: "사진을 왕창 보내며 뽀미 넘 귀여버ㅠㅠㅠ파워 주접",
+    answera: "짱이는 잘 지내. 짱이와의 하루에 대해 보고",
+    answerb: "사진을 왕창 보내며 짱이 넘 귀여버ㅠㅠㅠ파워 주접",
     type: "EI",
   },
   {

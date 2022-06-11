@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { ProgressBar, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { createSearchParams, Navigate, useNavigate } from "react-router-dom";
 import { QuestionData } from "../assets/data/questionData";
 
 const Question = () => {
-  const [questionNo, setQuestioinNo] = React.useState(0);
+  const [questionNo, setQuestionNo] = React.useState(0);
   const [totalScore, setTotalScore] = React.useState([
     { id: "EI", score: 0 },
     { id: "SN", score: 0 },
@@ -23,10 +23,23 @@ const Question = () => {
     setTotalScore(newScore);
     //다음 문제로 문제 수 증가
     if (QuestionData.length !== questionNo + 1) {
-      setQuestioinNo(questionNo + 1);
+      setQuestionNo(questionNo + 1);
     } else {
-      //결과 페이지로 이동
-      navigate("/result");
+      //MBTI 결과도출식 작성
+      const mbti = newScore.reduce(
+        (acc, cur) =>
+          acc +
+          (cur.score >= 2 ? cur.id.substring(0, 1) : cur.id.substring(1, 2)),
+        ""
+      );
+      // console.log("mbti", mbti);
+      // 결과 페이지로 이동
+      navigate({
+        pathname: "/result",
+        search: `?${createSearchParams({
+          mbti: mbti,
+        })}`,
+      });
     }
 
     console.log("newScore", newScore);
@@ -80,7 +93,7 @@ const Question = () => {
             marginLeft: "20px",
           }}
         >
-          {QuestionData[0].answerb}
+          {QuestionData[questionNo].answerb}
         </Button>
       </ButtonGroup>
     </Wrapper>
@@ -97,6 +110,7 @@ const Title = styled.div`
   font-size: 30pt;
   text-align: center;
   font-family: "EF_Diary";
+  padding 40px 0px
 `;
 
 const ButtonGroup = styled.div`

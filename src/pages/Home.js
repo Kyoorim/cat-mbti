@@ -27,7 +27,7 @@ const Home = () => {
               height={400}
             />
           </LogoImage>
-          <Desc>MBTI를 기반으로 하는 나랑 잘 맞는 강아지 찾기!</Desc>
+          <Desc>MBTI를 기반으로 하는 나랑 잘 맞는 댕댕이 찾기!</Desc>
           <Button
             style={{ fontFamily: "EF_Diary" }}
             onClick={handleClickButton}
